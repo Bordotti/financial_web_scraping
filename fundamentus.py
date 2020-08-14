@@ -5,6 +5,7 @@ import json
 from datetime import date
 from datetime import datetime
 import sys
+import time
 
 today = datetime.today()
 
@@ -23,7 +24,11 @@ def get_data():
 
     with open("tickers.txt", "r") as fundamentus_file:
         stocks = fundamentus_file.read().split()
+    
+    if len(stocks) <= 0:
+        stocks = ['BBAS3', 'PETR4', 'PETR3', 'WEG3']
 
+    print(stocks)
     stocks_info = []
     for stock in stocks:
         try:
@@ -34,7 +39,7 @@ def get_data():
             page = requests.get(stock_url, headers=headers)
             #print(page.text)
             html = BeautifulSoup(page.text, 'html.parser')
-            #print(html)
+            print(html)
 
             # Tabelas
             # 0 - Cotação
@@ -175,8 +180,9 @@ def get_todays_data():
         print(d)
         return (', '.join(d))
 
-
-get_data()
+while True:
+    get_data()
+    time.sleep(800)
 
 #if __name__ == '__main__':
 
