@@ -1,6 +1,6 @@
 # Introductions
-Script focused to gather stocks information from Fundamentus web site
+Script focused to scrap stocks fundamentalist information from Fundamentus.com.br web site and export to a text file with pipe column separator.
 
 # Install
-pip install requests beautifulsoup4
+pip install requests beautifulsoup4 pandas
 
